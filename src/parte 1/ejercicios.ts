@@ -239,8 +239,7 @@ export function buscar<T>(
     elementos: T[],
     callback: (elemento: T) => boolean
 ): T | undefined {
-    // TODO
-    throw new Error("Implementar");
+    return elementos.find(callback);
 }
 
 // -----------------------------------------------------------------------------
@@ -256,8 +255,7 @@ export function calcularTotal(
     alumnos: Alumno[],
     callback: (alumno: Alumno) => number
 ): number {
-    // TODO
-    throw new Error("Implementar");
+    return alumnos.reduce((total, alumno) => total + callback(alumno), 0);
 }
 
 // -----------------------------------------------------------------------------
@@ -278,8 +276,13 @@ export function calcularTotal(
 export function agruparPorCiudad(
     alumnos: Alumno[]
 ): Record<string, Alumno[]> {
-    // TODO
-    throw new Error("Implementar");
+    return alumnos.reduce((acumulador, alumno) => {
+        if (!(alumno.ciudad in acumulador)) {
+            acumulador[alumno.ciudad] = []
+        }
+        acumulador[alumno.ciudad]!.push(alumno);
+        return acumulador;
+    }, {} as Record<string, Alumno[]>);
 }
 
 // -----------------------------------------------------------------------------
@@ -305,8 +308,16 @@ export interface Estadisticas {
 export function obtenerEstadisticas(
     alumnos: Alumno[]
 ): Estadisticas {
-    // TODO
-    throw new Error("Implementar");
+
+    const aprobados = obtenerAprobados(alumnos);
+
+    return {
+        cantidadTotal: alumnos.length,
+        cantidadAprobados: aprobados.length,
+        cantidadDesaprobados: alumnos.length - aprobados.length,
+        promedio: calcularPromedio(alumnos),
+        mejorAlumno: obtenerMejorAlumno(alumnos)
+    };
 }
 
 // -----------------------------------------------------------------------------
