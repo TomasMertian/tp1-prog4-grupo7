@@ -133,8 +133,7 @@ export function buscarPorNombre(
 // Devolver true si existe al menos un alumno con nota menor a 6.
 // Resolver utilizando some.
 export function existeDesaprobado(alumnos: Alumno[]): boolean {
-    // TODO
-    throw new Error("Implementar");
+    return alumnos.some((alumno) => alumno.nota < 6);
 }
 
 // -----------------------------------------------------------------------------
