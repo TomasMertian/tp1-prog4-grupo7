@@ -10,24 +10,31 @@ export class Cuenta {
     private saldo: number;
 
     constructor(numero: number, titular: string, saldoInicial: number = 0) {
-        // TODO: asignar numero y titular. Validar que saldoInicial no sea
-        // negativo (si lo es, lanzar un error) y asignarlo a saldo.
-        throw new Error("Implementar");
+        this.numero = numero
+        this.titular = titular
+        this.saldo = saldoInicial
     }
 
     depositar(monto: number): void {
-        // TODO: no se pueden depositar valores negativos -> throw new Error(...)
-        throw new Error("Implementar");
+        if (monto > 0){
+           this.saldo +=  monto
+        } else {
+            throw new Error("no se puede depositar un monto negativo")
+        }
     }
 
     retirar(monto: number): void {
-        // TODO: no se pueden retirar valores negativos, ni retirar más
-        // dinero del disponible -> throw new Error(...)
-        throw new Error("Implementar");
+       if (monto > this.saldo){
+        throw new Error("saldo insuficiente")
+       }else if(monto <= 0) {
+            throw new Error("el monto a retirar debe ser mayor a 0")
+       } else{
+        this.saldo -= monto
+       }
     }
 
     consultarSaldo(): number {
         // TODO
-        throw new Error("Implementar");
+        return this.saldo
     }
 }

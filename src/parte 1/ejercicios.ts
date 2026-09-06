@@ -175,8 +175,7 @@ export function obtenerAlumnosDeCiudad(
     alumnos: Alumno[],
     ciudad: string
 ): Alumno[] {
-    // TODO
-    throw new Error("Implementar");
+        return alumnos.filter((alumno) => alumno.ciudad === ciudad);
 }
 
 // -----------------------------------------------------------------------------
@@ -191,7 +190,13 @@ export function calcularPromedioPorCiudad(
     ciudad: string
 ): number {
     // TODO
-    throw new Error("Implementar");
+    const alumnoCiudad = alumnos.filter(alumno => alumno.ciudad === ciudad)
+
+    if (alumnoCiudad.length === 0) {
+        return 0;
+    }
+
+    return calcularPromedio(alumnoCiudad)
 }
 
 // -----------------------------------------------------------------------------
@@ -208,7 +213,7 @@ export function transformar<T, R>(
     callback: (elemento: T) => R
 ): R[] {
     // TODO
-    throw new Error("Implementar");
+    return elementos.map(callback)
 }
 
 // -----------------------------------------------------------------------------
@@ -225,7 +230,7 @@ export function filtrar<T>(
     callback: (elemento: T) => boolean
 ): T[] {
     // TODO
-    throw new Error("Implementar");
+    return elementos.filter(callback)
 }
 
 // -----------------------------------------------------------------------------
