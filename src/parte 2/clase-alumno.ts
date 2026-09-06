@@ -9,11 +9,13 @@
  *   - Ejercicio 10: arreglo de materias inscriptas.
  */
 
+// import { Materia } from "../parte 3/ej20-universidad.js";
+
 // -----------------------------------------------------------------------------
 // EJERCICIO 10 - interface Materia
 // -----------------------------------------------------------------------------
 //TODO cambiar a type
-export interface Materia {
+export type Materia = {
     codigo: number;
     nombre: string;
     horas: number;
@@ -78,28 +80,39 @@ export class Alumno {
 
     agregarMateria(materia: Materia): void {
         // TODO
-        throw new Error("Implementar");
+        this.materias.push(materia)
     }
 
     quitarMateria(codigo: number): Materia | undefined {
-        // TODO: quitar la materia con ese código y devolverla.
-        // Si no está inscripto en ninguna con ese código, devolver undefined.
-        throw new Error("Implementar");
+        const materiaEncontrada = this.materias.find(m => m.codigo === codigo)
+
+        if (!materiaEncontrada) {
+            return undefined
+        }
+
+        this.materias = this.materias.filter(m => m.codigo !== codigo);
+
+        return materiaEncontrada
     }
 
     estaInscripto(codigo: number): boolean {
         // TODO
-        throw new Error("Implementar");
+        const estaInscriptoM = this.materias.find(m => m.codigo === codigo)
+        if (estaInscriptoM) {
+            return true
+        } else {
+            return false
+        }
     }
 
     cantidadMaterias(): number {
         // TODO
-        throw new Error("Implementar");
+        return this.materias.length
     }
 
     getMaterias(): Materia[] {
         // TODO: devolver las materias sin exponer el arreglo interno
         // (devolver una copia, no la referencia original).
-        throw new Error("Implementar");
+        return this.materias.slice()
     }
 }
