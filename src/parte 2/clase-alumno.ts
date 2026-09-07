@@ -97,12 +97,8 @@ export class Alumno {
 
     estaInscripto(codigo: number): boolean {
         // TODO
-        const estaInscriptoM = this.materias.find(m => m.codigo === codigo)
-        if (estaInscriptoM) {
-            return true
-        } else {
-            return false
-        }
+        return this.materias.some(m => m.codigo === codigo)
+        
     }
 
     cantidadMaterias(): number {

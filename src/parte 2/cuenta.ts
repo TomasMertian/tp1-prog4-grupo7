@@ -10,6 +10,9 @@ export class Cuenta {
     private saldo: number;
 
     constructor(numero: number, titular: string, saldoInicial: number = 0) {
+        if (saldoInicial < 0){
+            throw new Error("el saldo no puede ser negativo")
+        }
         this.numero = numero
         this.titular = titular
         this.saldo = saldoInicial
@@ -24,11 +27,11 @@ export class Cuenta {
     }
 
     retirar(monto: number): void {
-       if (monto > this.saldo){
-        throw new Error("saldo insuficiente")
-       }else if(monto <= 0) {
+       if(monto <= 0) {
             throw new Error("el monto a retirar debe ser mayor a 0")
-       } else{
+       }else if (monto > this.saldo){ 
+            throw new Error("saldo insuficiente")
+       } else {
         this.saldo -= monto
        }
     }

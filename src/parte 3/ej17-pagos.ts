@@ -13,21 +13,21 @@ export class TarjetaCredito implements MetodoPago {
         // TODO: informar el pago por consola (console.log), mencionando el
         // monto. Cada método de pago debe loguear un mensaje distinto que
         // lo identifique (por ejemplo, mencionando "tarjeta").
-        console.log("pago realizado con Tarjeta de Credito:" + monto)
+        console.log("pago realizado con Tarjeta de Credito:", monto)
     }
 }
 
 export class Transferencia implements MetodoPago {
     pagar(monto: number): void {
         // TODO: idem, mencionando "transferencia"
-        console.log("pago realizado con Transferencia:" + monto)
+        console.log("pago realizado con Transferencia:", monto)
     }
 }
 
 export class MercadoPago implements MetodoPago {
     pagar(monto: number): void {
         // TODO: idem, mencionando "mercado pago"
-        console.log("pago realizado con mercado pago:" + monto)
+        console.log("pago realizado con mercado pago:", monto)
 
     }
 }
@@ -35,7 +35,7 @@ export class MercadoPago implements MetodoPago {
 export class Efectivo implements MetodoPago {
     pagar(monto: number): void {
         // TODO: idem, mencionando "efectivo"
-        console.log("pago realizado con efectivo:" + monto)
+        console.log("pago realizado con efectivo:", monto)
 
     }
 }
