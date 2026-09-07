@@ -12,14 +12,14 @@ export class NotificacionEmail extends Notificacion {
     enviar(mensaje: string): void {
         // TODO: informar por consola (console.log) que se envía un email
         // con ese mensaje (mencionar "email").
-        console.log("notificacion email"+ mensaje)
+        console.log("notificacion email", mensaje)
     }
 }
 
 export class NotificacionSMS extends Notificacion {
     enviar(mensaje: string): void {
         // TODO: idem, mencionando "SMS"
-        console.log("notificacion SMS"+ mensaje)
+        console.log("notificacion SMS", mensaje)
 
     }
 }
@@ -27,7 +27,7 @@ export class NotificacionSMS extends Notificacion {
 export class NotificacionPush extends Notificacion {
     enviar(mensaje: string): void {
         // TODO: idem, mencionando "push"
-        console.log("notificacion push"+ mensaje)
+        console.log("notificacion push", mensaje)
     }
 }
 
