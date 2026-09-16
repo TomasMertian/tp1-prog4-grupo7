@@ -15,25 +15,25 @@ export abstract class Animal {
 
 export class Perro extends Animal {
     hacerSonido(): string {
-        return "guau";
+        return "Guau";
     }
 }
 
 export class Gato extends Animal {
     hacerSonido(): string {
-        return "miau";
+        return "Miau";
     }
 }
 
 export class Vaca extends Animal {
     hacerSonido(): string {
-        return "muu";
+        return "Muu";
     }
 }
 
 export class Pajaro extends Animal {
     hacerSonido(): string {
-        return "pio";
+        return "Pío";
     }
 }
 
