@@ -9,11 +9,13 @@
  *   - Ejercicio 10: arreglo de materias inscriptas.
  */
 
+// import { Materia } from "../parte 3/ej20-universidad.js";
+
 // -----------------------------------------------------------------------------
 // EJERCICIO 10 - interface Materia
 // -----------------------------------------------------------------------------
 //TODO cambiar a type
-export interface Materia {
+export type Materia = {
     codigo: number;
     nombre: string;
     horas: number;
@@ -66,15 +68,20 @@ export class Alumno {
     // -------------------------------------------------------------------
 
     getEdad(): number {
-        // TODO
-        throw new Error("Implementar");
+        return this.edad;
     }
 
     setEdad(edad: number): void {
         // TODO: debe impedir edades inválidas.
         // edad < 0   -> throw new Error(...)
         // edad > 120 -> throw new Error(...)
-        throw new Error("Implementar");
+        if (edad < 0) {
+            throw new Error("La edad no puede ser negativa");
+        }
+        if (edad > 120) {
+            throw new Error("La edad no puede superar los 120 años");
+        }
+        this.edad = edad;
     }
 
     // -------------------------------------------------------------------
@@ -83,28 +90,35 @@ export class Alumno {
 
     agregarMateria(materia: Materia): void {
         // TODO
-        throw new Error("Implementar");
+        this.materias.push(materia)
     }
 
     quitarMateria(codigo: number): Materia | undefined {
-        // TODO: quitar la materia con ese código y devolverla.
-        // Si no está inscripto en ninguna con ese código, devolver undefined.
-        throw new Error("Implementar");
+        const materiaEncontrada = this.materias.find(m => m.codigo === codigo)
+
+        if (!materiaEncontrada) {
+            return undefined
+        }
+
+        this.materias = this.materias.filter(m => m.codigo !== codigo);
+
+        return materiaEncontrada
     }
 
     estaInscripto(codigo: number): boolean {
         // TODO
-        throw new Error("Implementar");
+        return this.materias.some(m => m.codigo === codigo)
+        
     }
 
     cantidadMaterias(): number {
         // TODO
-        throw new Error("Implementar");
+        return this.materias.length
     }
 
     getMaterias(): Materia[] {
         // TODO: devolver las materias sin exponer el arreglo interno
         // (devolver una copia, no la referencia original).
-        throw new Error("Implementar");
+        return this.materias.slice()
     }
 }
