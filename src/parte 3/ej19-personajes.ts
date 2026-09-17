@@ -20,21 +20,32 @@ export abstract class Personaje {
 
 export class Guerrero extends Personaje {
     atacar(objetivo: Personaje): void {
-        // TODO: aplicar daño = this.ataque a objetivo.vida (sin bajar de 0)
-        throw new Error("Implementar");
+      if (objetivo.vida >= this.ataque) {
+        objetivo.vida -= this.ataque;
+      } else {
+        objetivo.vida = 0;
+      }
     }
 }
 
 export class Mago extends Personaje {
     atacar(objetivo: Personaje): void {
-        // TODO: aplicar daño = Math.round(this.ataque * 1.5)
-        throw new Error("Implementar");
-    }
+        const daño = Math.round(this.ataque * 1.5);
+        if (objetivo.vida >= daño) {
+          objetivo.vida -= daño;
+        } else {
+          objetivo.vida = 0;
+        }
+}
 }
 
 export class Arquero extends Personaje {
     atacar(objetivo: Personaje): void {
-        // TODO: aplicar daño = Math.round(this.ataque * 0.8)
-        throw new Error("Implementar");
+        const daño = Math.round(this.ataque * 0.8);
+        if (objetivo.vida >= daño) {
+          objetivo.vida -= daño;
+        } else {
+          objetivo.vida = 0;
+        }
     }
 }
